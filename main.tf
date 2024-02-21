@@ -42,23 +42,24 @@ module "keyvault" {
   service_principal_name      = var.service_principal_name
   service_principal_object_id = module.spn.service_principal_object_id
   service_principal_tenant_id = module.spn.service_principal_tenant_id
-  depends_on = [ 
+  depends_on = [
     module.spn
-   ]
+  ]
 }
 resource "azurerm_key_vault_secret" "key-secret" {
   name         = module.spn.client_id
   value        = module.spn.client_secret
   key_vault_id = module.keyvault.keyvault_id
-  depends_on = [ 
+  depends_on = [
     module.keyvault
-   ]
+  ]
 }
-module "aks" {
-  source = "./Modules/aks"
-  aks_name = var.aks_name
-  rgname = var.rgname
-  client_id = module.spn.client_id
-  client_secret = module.spn.client_secret
-  location = var.location
+module "vnet" {
+  source             = "./Modules/vnet"
+  vnet_address_space = var.vnet_address_space
+  vnet_name          = var.vnet_name
+  rgname             = var.rgname
+  aks_subnet_name    = var.aks_subnet_name
+  aks_subnet_prefix  = var.aks_subnet_prefix
+
 }
