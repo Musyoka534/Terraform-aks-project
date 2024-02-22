@@ -63,3 +63,16 @@ module "vnet" {
   aks_subnet_prefix  = var.aks_subnet_prefix
 
 }
+
+module "aks" {
+  source = "./Modules/aks"
+  rgname = var.rgname
+  aks_name = var.aks_name
+  client_id = module.spn.client_id
+  client_secret = module.spn.client_secret
+  location = var.location
+  depends_on = [ 
+    module.spn
+   ]
+  
+}
