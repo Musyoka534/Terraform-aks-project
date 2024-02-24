@@ -54,25 +54,18 @@ resource "azurerm_key_vault_secret" "key-secret" {
     module.keyvault
   ]
 }
-module "vnet" {
-  source             = "./Modules/vnet"
-  vnet_address_space = var.vnet_address_space
-  vnet_name          = var.vnet_name
-  rgname             = var.rgname
-  aks_subnet_name    = var.aks_subnet_name
-  aks_subnet_prefix  = var.aks_subnet_prefix
-
-}
-
 module "aks" {
-  source = "./Modules/aks"
-  rgname = var.rgname
-  aks_name = var.aks_name
-  client_id = module.spn.client_id
-  client_secret = module.spn.client_secret
-  location = var.location
-  depends_on = [ 
+  source          = "./Modules/aks"
+  rgname          = var.rgname
+  aks_name        = var.aks_name
+  client_id       = module.spn.client_id
+  client_secret   = module.spn.client_secret
+  location        = var.location
+  vnet_name       = var.vnet_name
+  aks_subnet_name = var.aks_subnet_name
+
+  depends_on = [
     module.spn
-   ]
-  
+  ]
+
 }

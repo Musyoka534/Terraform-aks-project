@@ -18,5 +18,17 @@ variable "client_secret" {
 }
 variable "ssh_public_key" {
     default = "~/.ssh/id_rsa.pub"
-
 }
+variable "vnet" {
+  type = object({
+    cird            = string
+    sn_cluster_cird = string
+  })
+  default = {
+    cird            = "192.168.0.0/16"
+    sn_cluster_cird = "192.168.0.0/17"
+  }
+  description = "The VNET and subnet configuration."
+}
+variable "vnet_name" {}
+variable "aks_subnet_name" {}

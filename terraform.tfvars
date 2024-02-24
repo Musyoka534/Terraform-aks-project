@@ -4,6 +4,4 @@ service_principal_name = "dev-spn"
 keyvault_name          = "devkeyvaultx"
 aks_name               = "testaks"
 vnet_name              = "aks-vnet"
-vnet_address_space     = ["192.168.0.0/16"]
 aks_subnet_name        = "aks-subnet"
-aks_subnet_prefix      = ["192.168.0.0/24"]

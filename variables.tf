@@ -19,6 +19,4 @@ variable "aks_name" {
   description = "AKS Name"
 }
 variable "vnet_name" {}
-variable "vnet_address_space" {}
 variable "aks_subnet_name" {}
-variable "aks_subnet_prefix" {}
