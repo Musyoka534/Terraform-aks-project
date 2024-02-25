@@ -12,7 +12,7 @@ resource "azurerm_resource_group" "dev-rg" {
     Owner        = "Information,Communications and Technology"
     BusinessUnit = "IT Cloud Engineering"
     Environment  = "Dev"
-    CreatedBy    = "Musyoka Kilonzo"
+    CreatedBy    = "Cloud Engineer"
   }
 }
 
@@ -26,7 +26,7 @@ module "spn" {
 }
 
 resource "azurerm_role_assignment" "rolespn" {
-  scope                = "/subscriptions/1314d920-4b37-49ea-b135-a317a2be8852"
+  scope                = "/subscriptions/xxxx-xxxx-xxxx-xxxx"
   role_definition_name = "Contributor"
   principal_id         = module.spn.service_principal_object_id
   depends_on = [
@@ -68,4 +68,15 @@ module "aks" {
     module.spn
   ]
 
+}
+
+module "acr" {
+  source                          = "./modules/acr"
+  rgname                          = var.rgname
+  location                        = var.location
+  acr_name                        = var.acr_name
+  aks_service_principal_object_id = module.spn.client_id
+  depends_on = [
+    module.aks, module.spn
+  ]
 }

@@ -20,3 +20,7 @@ variable "aks_name" {
 }
 variable "vnet_name" {}
 variable "aks_subnet_name" {}
+variable "acr_name" {
+  type        = string
+  description = "container registry"
+}

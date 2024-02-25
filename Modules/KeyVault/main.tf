@@ -15,7 +15,7 @@ resource "azurerm_key_vault" "kv" {
     Owner        = "Information,Communications and Technology"
     BusinessUnit = "IT Cloud Engineering"
     Environment  = "Dev"
-    CreatedBy    = "Musyoka Kilonzo"
+    CreatedBy    = "Cloud Engineer"
   }
 }
 
