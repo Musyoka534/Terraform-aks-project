@@ -38,12 +38,12 @@ az storage container create --name $CONTAINER_NAME --account-name $STORAGE_ACCOU
 2. **Set Terraform Alias**
 
    alias tf=terraform
-3.**initialize the providers**
+3. **initialize the providers**
 
   tf init
-4.**Run the plan**
+4. **Run the plan**
 
   tf plan
-5.**Apply the changes**
+5. **Apply the changes**
 
   tf apply --auto-approve
