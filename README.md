@@ -33,5 +33,17 @@ az storage container create --name $CONTAINER_NAME --account-name $STORAGE_ACCOU
 
 ## Usage/Examples
 1. **Login to the Azure CLI**
-   ```bash
+
    az login --use-device-code
+2. **Set Terraform Alias**
+
+   alias tf=terraform
+3.**initialize the providers**
+
+  tf init
+4.**Run the plan**
+
+  tf plan
+5.**Apply the changes**
+
+  tf apply --auto-approve
